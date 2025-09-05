@@ -1,20 +1,20 @@
 /* ============================
-   RESET (kept minimal)
+    RESET (kept minimal)
 ============================ */
 *,
 *::before,
 *::after { box-sizing: border-box; }
-html,body { height: 100%;}
+html,body { height: 100%; }
 body,h1,h2,h3,p,ul,li { margin:0; padding:0; }
 ul { list-style:none; }
 img,svg { display:block; max-width:100%; }
 
 /* ============================
-   THEME
+    THEME
 ============================ */
 
 body{
-  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   color:#191919;
   background:#ffffff;
   -webkit-font-smoothing:antialiased;
@@ -22,7 +22,7 @@ body{
 }
 
 /* ============================
-   NAVBAR (sticky like Medium)
+    NAVBAR (sticky like Medium)
 ============================ */
 nav{
   position: sticky;
@@ -59,7 +59,7 @@ nav h3::before{
 /* Menu */
 nav ul{
   display:flex; align-items:center; gap:24px;
-  font: 500 14px/1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 500 14px/1 "Roboto", sans-serif;
   color:#191919;
 }
 nav ul li{ cursor:pointer; opacity:.9; }
@@ -84,7 +84,7 @@ nav ul button:hover{ filter:brightness(1.05); }
 }
 
 /* ============================
-   HERO (header) — FLEX LAYOUT
+    HERO (header) — FLEX LAYOUT
 ============================ */
 header{
   background:#ffc017;
@@ -99,9 +99,9 @@ header{
   row-gap: 0;
 
   /* roomy, Medium-like paddings:
-     top | right | bottom | left  */
+      top | right | bottom | left  */
   padding: 56px clamp(16px, 6vw, 64px)
-           72px clamp(16px, 10vw, 136px);
+              72px clamp(16px, 10vw, 136px);
 }
 
 /* LEFT COLUMN (copy + CTA) */
@@ -124,7 +124,7 @@ header h1{
 
 /* Subhead */
 header h2{
-  font: 400 1.125rem/1.5 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 400 1.125rem/1.5 "Roboto", sans-serif;
   color:#1a1a1acc;
   max-width:42ch;
 }
@@ -193,7 +193,7 @@ header > div:last-child svg{
   grid-column: 2;
   grid-row: 1;
   align-self: center;
-  font: 600 14px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 600 14px/1.1 "Roboto", sans-serif;
   color: #191919;
 }
 
@@ -209,7 +209,7 @@ header > div:last-child svg{
 /* meta line (fourth <p>) */
 .post-mini > p:nth-of-type(4){
   grid-column: 1 / -1;
-  font: 400 14px/1.2 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 400 14px/1.2 "Roboto", sans-serif;
   color: #6b6b6b;
 }
 
@@ -221,7 +221,7 @@ header > div:last-child svg{
   display:flex;
   align-items:center;
   gap:10px;
-  font: 700 12px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 700 12px/1.1 "Roboto", sans-serif;
   letter-spacing: .12em;
   text-transform: uppercase;
   color:#191919;
@@ -275,7 +275,7 @@ header > div:last-child svg{
   width:24px; height:24px; border-radius:50%; object-fit:cover;
 }
 .ti__author{
-  font: 600 14px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 600 14px/1.1 "Roboto", sans-serif;
   color:#191919;
 }
 
@@ -289,7 +289,7 @@ header > div:last-child svg{
 
 /* meta line */
 .ti__meta{
-  font: 400 14px/1.2 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font: 400 14px/1.2 "Roboto", sans-serif;
   color:#6b6b6b;
 }
 .ti__meta .dot{ margin: 0 6px; }
@@ -302,7 +302,7 @@ header > div:last-child svg{
   display: grid;
   grid-template-columns: minmax(0, 700px) 320px; /* center feed + right sidebar */
   gap: 56px;                                     /* airy gap like mockup */
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #242424;
 }
 
@@ -441,10 +441,10 @@ header > div:last-child svg{
 }
 
 .discover__footer{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 22px;
-    justify-content: space-between;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 14px 22px;
+     justify-content: space-between;
 }
 .discover__footer-link{
   font-size: 14px;
