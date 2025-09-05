@@ -94,6 +94,7 @@ header{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
+  justify-content: center;
 
   column-gap: clamp(24px, 6vw, 80px);
   row-gap: 0;
