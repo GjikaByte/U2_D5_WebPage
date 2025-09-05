@@ -455,3 +455,167 @@ header > div:last-child svg{
   color:#404448;
   text-decoration: underline;
 }
+
+
+/* --- Navbar transition state (one clean version) --- */
+nav, nav * {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+nav.scrolled {
+  background: #ffffff;
+  border-bottom-color: #e6e6e6;
+}
+nav.scrolled ul { color:#242424; }
+nav.scrolled ul button {
+  background:#1a8917;  /* Medium green */
+  border-color:#1a8917;
+  color:#fff;
+}
+
+/* --- Fade-in animation (CSS-only) --- */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(14px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* apply to feed rows (no JS needed) */
+.feed .main-article {
+  opacity: 0;
+  animation: fadeUp .55s ease-out forwards;
+}
+
+/* staggered appearance like Medium */
+.feed .main-article:nth-child(1) { animation-delay: 40ms; }
+.feed .main-article:nth-child(2) { animation-delay: 120ms; }
+.feed .main-article:nth-child(3) { animation-delay: 200ms; }
+.feed .main-article:nth-child(4) { animation-delay: 280ms; }
+.feed .main-article:nth-child(5) { animation-delay: 360ms; }
+.feed .main-article:nth-child(6) { animation-delay: 440ms; }
+.feed .main-article:nth-child(7) { animation-delay: 520ms; }
+.feed .main-article:nth-child(8) { animation-delay: 600ms; }
+
+
+/* =========================
+   MOBILE (≤ 768px)
+========================= */
+@media (max-width: 768px){
+
+  /* Navbar */
+  nav{
+    padding: 12px 16px;
+  }
+  nav h3{ font-size: 22px; }
+  nav ul{ gap: 14px; }
+  nav ul button{
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  /* Hero */
+  header{
+    padding: 36px 16px 44px 16px;
+    column-gap: 20px;
+  }
+  header h1{
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+    line-height: 1.02;
+    margin-bottom: 12px;
+  }
+  header h2{
+    font-size: 1rem;
+    max-width: 34ch;
+  }
+  header .search{ margin-top: 22px; }
+  /* hide the artwork on very small screens (optional) */
+  header > div:last-child{ display:none; }
+
+  /* Trending list */
+  .trending{
+    padding: 20px 16px;
+  }
+  .trending__title{
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+  .trending__grid{
+    grid-template-columns: 1fr;   /* 1 per row */
+    gap: 18px;
+  }
+  .ti{ padding-left: 44px; }
+  .ti::before{ font-size: 32px; top: -2px; }
+  .ti__title{ font-size: 18px; }
+  .ti__meta{ font-size: 12px; }
+
+  /* Layout: Discover ABOVE Feed on mobile */
+  .Main{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "discover"
+      "feed";
+    gap: 28px;
+    padding: 20px 16px 40px;
+  }
+  .feed{ grid-area: feed; }
+  .discover{
+    grid-area: discover;
+    position: static;    /* no sticky on mobile */
+    top: auto;
+  }
+
+  /* Discover module */
+  .discover__heading{
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  .discover__tags{
+    gap: 10px;
+  }
+  .discover__tag{
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .discover__footer{
+    gap: 12px 18px;
+  }
+  .discover__footer-link{
+    font-size: 13px;
+  }
+
+  /* Feed rows */
+  .main-article{
+    flex-direction: column;   /* image below text in mockup */
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .main-article__title{
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .main-article__description{
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: none;
+  }
+  .main-article__meta{ font-size: 12.5px; }
+  .main-article__tag{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .main-article__thumb{
+    width: 100%;
+    height: auto;        /* full-width image under text */
+    flex: 0 0 auto;
+    border-radius: 8px;
+  }
+
+  /* Fade-in timing (slightly faster on mobile) */
+  .feed .main-article{ animation-duration: .45s; }
+  .feed .main-article:nth-child(1){ animation-delay: 20ms; }
+  .feed .main-article:nth-child(2){ animation-delay: 80ms; }
+  .feed .main-article:nth-child(3){ animation-delay: 140ms; }
+  .feed .main-article:nth-child(4){ animation-delay: 200ms; }
+  .feed .main-article:nth-child(5){ animation-delay: 260ms; }
+  .feed .main-article:nth-child(6){ animation-delay: 320ms; }
+  .feed .main-article:nth-child(7){ animation-delay: 380ms; }
+}
