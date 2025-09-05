@@ -1,0 +1,457 @@
+/* ============================
+   RESET (kept minimal)
+============================ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html,body { height: 100%;}
+body,h1,h2,h3,p,ul,li { margin:0; padding:0; }
+ul { list-style:none; }
+img,svg { display:block; max-width:100%; }
+
+/* ============================
+   THEME
+============================ */
+
+body{
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:#191919;
+  background:#ffffff;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ============================
+   NAVBAR (sticky like Medium)
+============================ */
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:#ffc017;
+  border-top:1px solid #191919;
+  border-bottom:1px solid #191919;
+
+  /* align with hero left/right paddings */
+  padding: 14px clamp(16px, 6vw, 64px) 14px clamp(16px, 10vw, 136px);
+}
+
+/* Brand */
+nav h3{
+  display:flex; align-items:center; gap:12px;
+  font-family:"Spectral", serif;
+  font-weight:700;
+  font-size:28px;
+  letter-spacing:-.02em;
+  color:#191919;
+}
+nav h3::before{
+  content:"";
+  width:10px; height:10px; border-radius:50%; background:#191919;
+  box-shadow:12px 0 0 #191919
+}
+
+/* Menu */
+nav ul{
+  display:flex; align-items:center; gap:24px;
+  font: 500 14px/1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:#191919;
+}
+nav ul li{ cursor:pointer; opacity:.9; }
+nav ul li:hover{ opacity:1; }
+
+/* CTA in nav */
+nav ul button{
+  margin-left:8px;
+  padding:8px 14px;
+  border-radius:9999px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #191919;
+  font-weight:700;
+  cursor:pointer;
+}
+nav ul button:hover{ filter:brightness(1.05); }
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================
+   HERO (header) — FLEX LAYOUT
+============================ */
+header{
+  background:#ffc017;
+  border-bottom:1px solid #191919;
+
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+
+  column-gap: clamp(24px, 6vw, 80px);
+  row-gap: 0;
+
+  /* roomy, Medium-like paddings:
+     top | right | bottom | left  */
+  padding: 56px clamp(16px, 6vw, 64px)
+           72px clamp(16px, 10vw, 136px);
+}
+
+/* LEFT COLUMN (copy + CTA) */
+header h1,
+header h2,
+header button{
+  flex: 0 0 min(48rem, 100%);   /* stable “column” width */
+}
+
+/* Headline */
+header h1{
+  font-family:"Spectral", serif;
+  font-weight:700;
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  line-height:.95;
+  letter-spacing:-.02em;
+  color:#191919;
+  margin:0 0 18px 0;
+}
+
+/* Subhead */
+header h2{
+  font: 400 1.125rem/1.5 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:#1a1a1acc;
+  max-width:42ch;
+}
+
+/* CTA — reuse .search wrapper */
+header .search{ margin-top:34px; }
+header .search input{ display:none; }
+header .search button{
+  padding:14px 24px;
+  border-radius:9999px;
+  background:#191919;
+  color:#fff;
+  border:1px solid #191919;
+  font-weight:700;
+  cursor:pointer;
+}
+header .search button:hover{ filter:brightness(1.05); }
+
+/* RIGHT COLUMN — artwork (last div) */
+header > div:last-child{
+  flex:1 1 480px;            /* fills the remaining space */
+  min-width:420px;
+  max-width:720px;
+  margin-left:auto;
+  align-self:stretch;
+  overflow:hidden;
+}
+header > div:last-child svg{
+  width:100%;
+  height:100%;
+}
+
+/* Apply this class to that <div> */
+.post-mini{
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;   /* avatar + text */
+  grid-auto-rows: min-content;
+  column-gap: 10px;
+  row-gap: 6px;
+}
+
+/* index number “01” (first <p>) */
+.post-mini > p:first-child{
+  position: absolute;
+  top: -6px;                         /* nudge up a bit */
+  left: -44px;                       /* sits outside to the left */
+  font: 700 42px/1 "Spectral", serif;
+  letter-spacing: .02em;
+  color: rgba(0,0,0,.06);            /* very light, like the mockup */
+  pointer-events: none;
+}
+
+/* avatar */
+.post-mini > img{
+  grid-column: 1;
+  grid-row: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* author name (second <p>) */
+.post-mini > p:nth-of-type(2){
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  font: 600 14px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color: #191919;
+}
+
+/* title (third <p>) */
+.post-mini > p:nth-of-type(3){
+  grid-column: 1 / -1;
+  font: 800 20px/1.25 "Spectral", serif;
+  letter-spacing: -.01em;
+  color: #191919;
+  margin-top: 2px;
+}
+
+/* meta line (fourth <p>) */
+.post-mini > p:nth-of-type(4){
+  grid-column: 1 / -1;
+  font: 400 14px/1.2 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color: #6b6b6b;
+}
+
+/* ---------- Section heading ---------- */
+.trending{
+  padding:  clamp(16px, 6vw, 64px) 28px;
+}
+.trending__title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font: 700 12px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color:#191919;
+  margin-bottom: 18px;
+}
+.icon-trending{
+  width:18px; height:18px; border:2px solid #191919; border-radius:50%; display:inline-block; position:relative;
+}
+.icon-trending::after{
+  content:""; position:absolute; inset:4px 5px auto auto;
+  width:6px; height:6px; border-top:2px solid #191919; border-right:2px solid #191919;
+  transform: rotate(45deg);
+}
+
+/* ---------- Grid layout ---------- */
+.trending__grid{
+  list-style:none;
+  padding:0; margin:0;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 28px 56px;
+  counter-reset: rank;
+}
+
+/* ---------- Card ---------- */
+.ti{
+  position:relative;
+  counter-increment: rank;
+  padding-left: 56px;              /* space for the big index */
+}
+
+/* big, faint index number */
+.ti::before{
+  content: counter(rank, decimal-leading-zero);
+  position:absolute;
+  left: 0;
+  top: -4px;
+  font: 700 42px/1 "Spectral", serif;
+  color: rgba(0,0,0,.08);
+}
+
+/* header: avatar + author */
+.ti__header{
+  display:grid;
+  grid-template-columns: 28px 1fr;
+  align-items:center;
+  column-gap:10px;
+  margin-bottom: 6px;
+}
+.ti__avatar{
+  width:24px; height:24px; border-radius:50%; object-fit:cover;
+}
+.ti__author{
+  font: 600 14px/1.1 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:#191919;
+}
+
+/* title */
+.ti__title{
+  font: 800 20px/1.3 "Spectral", serif;
+  letter-spacing:-.01em;
+  color:#191919;
+  margin: 2px 0 6px;
+}
+
+/* meta line */
+.ti__meta{
+  font: 400 14px/1.2 "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:#6b6b6b;
+}
+.ti__meta .dot{ margin: 0 6px; }
+
+/* ====== PAGE LAYOUT: feed + right sidebar ====== */
+.Main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 700px) 320px; /* center feed + right sidebar */
+  gap: 56px;                                     /* airy gap like mockup */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #242424;
+}
+
+/* ====== FEED (center column) ====== */
+.feed{
+  display: flex;
+  flex-direction: column;
+}
+
+/* One row / article */
+.main-article{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;                               /* space between text and thumbnail */
+  padding: 22px 0;
+  border-bottom: 1px solid #f0f2f2;        /* lighter divider */
+}
+
+/* Left stack (text) */
+.main-article__content{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                                /* tight vertical rhythm */
+  min-width: 0;                            /* allow wrapping */
+  flex: 1 1 auto;
+}
+
+/* Author row */
+.main-article__author-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.main-article__avatar{
+  width: 22px; height: 22px; border-radius: 50%; object-fit: cover;
+}
+.main-article__author{
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #6b6f73;                          /* subtle gray like mockup */
+}
+
+/* Title */
+.main-article__title{
+  margin: 0;
+  font-size: 24px;                         /* slightly smaller than before */
+  line-height: 1.22;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+/* Description */
+.main-article__description{
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: #6b6f73;
+  max-width: 56ch;                         /* comfortable measure */
+}
+
+/* Meta row */
+.main-article__meta-row{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.main-article__meta{
+  font-size: 13.5px;
+  color: #8a8f94;
+}
+
+/* Tag pill */
+.main-article__tag{
+  padding: 6px 12px;
+  font-size: 12.5px;
+  color: #586069;
+  background: #f3f4f6;
+  border: 1px solid #e7e8ea;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* Right thumbnail (proportions like Medium) */
+.main-article__thumb{
+  flex: 0 0 208px;                         /* ~208×140 keeps aspect like mockup */
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ====== DISCOVER (right sidebar) ====== */
+.discover{
+  position: sticky;
+  top: 16px;                               /* stays visible as you scroll */
+  align-self: start;
+  color: #242424;
+  background-color: white;
+
+}
+
+.discover__heading{
+  font-size: 12px;
+  letter-spacing: .06em;
+  font-weight: 700;
+  color: #6b6f73;
+  margin: 2px 0 14px;
+}
+
+.discover__tags{
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 33%;
+  gap: 12px 14px;
+  margin-bottom: 18px;
+}
+.discover__tag{
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #3b3b3b;
+  text-decoration: none;
+  line-height: 1;
+}
+.discover__tag:hover{ background:#f3f4f5; border-color:#dcdcdc; }
+
+.discover__divider{
+  border: none;
+  height: 1px;
+  background: #efefef;
+  margin: 22px 0;
+}
+
+.discover__footer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    justify-content: space-between;
+}
+.discover__footer-link{
+  font-size: 14px;
+  color: #6b6f73;
+  text-decoration: none;
+}
+.discover__footer-link:hover{
+  color:#404448;
+  text-decoration: underline;
+}
