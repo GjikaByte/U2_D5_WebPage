@@ -41,20 +41,47 @@ nav{
   padding: 14px clamp(16px, 6vw, 64px) 14px clamp(16px, 10vw, 136px);
 }
 
-/* Brand */
-nav h3{
-  display:flex; align-items:center; gap:12px;
+/* Brand block (inside nav) */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;                 /* space between icon and wordmark */
+}
+
+/* Icon: three shapes */
+.brand__mark{
+  display:flex;
+  align-items:center;
+  gap: 2px;
+}
+
+.brand__dot{
+  width:28px;
+  height:28px;
+  background:#191919;
+  border-radius:50%;
+}
+
+.brand__pill{
+  height:28px;
+  background:#191919;
+  border-radius:50%;       /* fully rounded ends (pill) */
+}
+
+.brand__pill--narrow{ width:16px; }
+.brand__pill--wide{ width: 7px; }
+
+/* Wordmark */
+.brand__text{
   font-family:"Spectral", serif;
   font-weight:700;
-  font-size:28px;
+  font-size:32px;           /* adjust if you need it smaller */
   letter-spacing:-.02em;
   color:#191919;
+  line-height:1;
+  translate: -10px;;
 }
-nav h3::before{
-  content:"";
-  width:10px; height:10px; border-radius:50%; background:#191919;
-  box-shadow:12px 0 0 #191919
-}
+
 
 /* Menu */
 nav ul{
