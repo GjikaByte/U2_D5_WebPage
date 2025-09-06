@@ -31,7 +31,8 @@ nav{
 
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
+  gap: 670px;
 
   background:#ffc017;
   border-top:1px solid #191919;
@@ -46,6 +47,7 @@ nav{
   display:flex;
   align-items:center;
   gap:12px;                 /* space between icon and wordmark */
+  translate: -20px;         /* nudge left to align with hero text */
 }
 
 /* Icon: three shapes */
@@ -88,6 +90,7 @@ nav ul{
   display:flex; align-items:center; gap:24px;
   font: 500 14px/1 "Roboto", sans-serif;
   color:#191919;
+  translate: -170px;
 }
 nav ul li{ cursor:pointer; opacity:.9; }
 nav ul li:hover{ opacity:1; }
@@ -142,7 +145,7 @@ header button{
 /* Headline */
 header h1{
   font-family:"Spectral", serif;
-  font-weight:700;
+  font-weight:400;
   font-size: clamp(3.2rem, 9vw, 7.5rem);
   line-height:.95;
   letter-spacing:-.02em;
