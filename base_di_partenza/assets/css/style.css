@@ -440,7 +440,7 @@ header > div:last-child svg{
   font-size: 12px;
   letter-spacing: .06em;
   font-weight: 700;
-  color: #6b6f73;
+  color: #191919;
   margin: 2px 0 14px;
 }
 
@@ -455,10 +455,9 @@ header > div:last-child svg{
   display: inline-block;
   padding: 10px 14px;
   border: 1px solid #e6e6e6;
-  background: #fafafa;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #3b3b3b;
+  background: #ffffff;
+  font-size: 11px;
+  color: #8a8f94;
   text-decoration: none;
   line-height: 1;
 }
